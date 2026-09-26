@@ -14,7 +14,8 @@ import {
   faRightFromBracket, faChevronRight, faChevronDown, faXmark, faPlus, faEllipsis, faCheck,
   faArrowUp, faArrowDown, faArrowLeft, faInbox, faTableColumns, faShareNodes, faCalendarCheck,
   faUserPen, faLayerGroup, faEye, faEyeSlash, faEnvelope, faLock, faKey,
-  faCircleQuestion, faBookOpen, faLightbulb,
+  faCircleQuestion, faBookOpen, faLightbulb, faShieldHalved, faServer, faDatabase,
+  faTrash, faPen, faDownload, faFileExport, faWrench,
 } from '@fortawesome/free-solid-svg-icons';
 
 config.autoAddCss = false;
@@ -86,3 +87,11 @@ export const IconKey = make(faKey);
 export const IconHelp = make(faCircleQuestion);
 export const IconBook = make(faBookOpen);
 export const IconLightbulb = make(faLightbulb);
+export const IconShield = make(faShieldHalved);
+export const IconServer = make(faServer);
+export const IconDatabase = make(faDatabase);
+export const IconTrash = make(faTrash);
+export const IconEdit = make(faPen);
+export const IconDownload = make(faDownload);
+export const IconExport = make(faFileExport);
+export const IconWrench = make(faWrench);

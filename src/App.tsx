@@ -27,6 +27,7 @@ const Settings = lazy(() => import('./pages/Settings'));
 const MoneyHub = lazy(() => import('./pages/MoneyHub'));
 const Community = lazy(() => import('./pages/Community'));
 const Help = lazy(() => import('./pages/Help'));
+const Admin = lazy(() => import('./pages/Admin'));
 
 /** Five intuitive destinations for community savings groups */
 const TABS = [
@@ -219,7 +220,18 @@ function Gate() {
     session, member, loading, noGroups, awaitingApproval, currentGroupId, groups, refresh,
   } = useSession();
   const navigate = useNavigate();
+  const location = useLocation();
   useTheme();
+
+  // The Developer Super Admin Portal is completely independent from the app's
+  // group membership, onboarding state, or member profile gates.
+  if (location.pathname === '/admin') {
+    return (
+      <Suspense fallback={<div className="auth" style={{ minHeight: '60vh' }}><Loading what="Opening Developer Portal" /></div>}>
+        <Admin />
+      </Suspense>
+    );
+  }
 
   // Unauthenticated: a single <Login> instance handles /login, /signup, /join.
   // Using one Route avoids remounting (which replayed the pop-in animation and
