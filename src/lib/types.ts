@@ -2,7 +2,7 @@
 
 export type Role = 'member' | 'cashier' | 'accountant' | 'admin';
 export type Vote = 'approve' | 'reject' | 'abstain';
-export type PaymentMethod = 'cash' | 'bank';
+export type PaymentMethod = 'cash' | 'upi' | 'bank';
 export type LoanStatus =
   | 'requested' | 'approved' | 'rejected' | 'disbursed' | 'closed' | 'written_off';
 export type ExpenseStatus = 'proposed' | 'approved' | 'rejected' | 'paid';

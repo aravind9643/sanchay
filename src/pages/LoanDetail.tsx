@@ -606,7 +606,7 @@ function RepaySheet({
   const [penalty, setPenalty] = useState('');
   const [note, setNote] = useState('');
   const [paidOn, setPaidOn] = useState(() => today());
-  const [method, setMethod] = useState<PaymentMethod>('bank');
+  const [method, setMethod] = useState<PaymentMethod>('cash');
 
   const save = useMutation(
     async () => {
@@ -674,8 +674,9 @@ function RepaySheet({
         </Field>
         <Field label="Paid by">
           <select value={method} onChange={(e) => setMethod(e.target.value as PaymentMethod)}>
-            <option value="bank">Bank</option>
             <option value="cash">Cash</option>
+            <option value="upi">UPI</option>
+            <option value="bank">Bank</option>
           </select>
         </Field>
       </div>
@@ -704,7 +705,7 @@ function RepaySheet({
 
 function DisburseSheet({ loan, onClose }: { loan: LoanRow; onClose: () => void }) {
   const [on, setOn] = useState(() => today());
-  const [method, setMethod] = useState<PaymentMethod>('bank');
+  const [method, setMethod] = useState<PaymentMethod>('cash');
 
   const go = useMutation(
     async () => {
@@ -734,8 +735,9 @@ function DisburseSheet({ loan, onClose }: { loan: LoanRow; onClose: () => void }
         </Field>
         <Field label="Paid by">
           <select value={method} onChange={(e) => setMethod(e.target.value as PaymentMethod)}>
-            <option value="bank">Bank transfer</option>
             <option value="cash">Cash in hand</option>
+            <option value="upi">UPI transfer</option>
+            <option value="bank">Bank transfer</option>
           </select>
         </Field>
       </div>
@@ -818,7 +820,7 @@ function RecoverySheet({ loan, onClose }: { loan: LoanRow; onClose: () => void }
   const [principal, setPrincipal] = useState(String(paiseToRupees(unrecovered)));
   const [interest, setInterest] = useState('0');
   const [paidOn, setPaidOn] = useState(() => today());
-  const [method, setMethod] = useState<PaymentMethod>('bank');
+  const [method, setMethod] = useState<PaymentMethod>('cash');
   const [note, setNote] = useState('');
 
   const recovery = useMutation(
@@ -862,8 +864,9 @@ function RecoverySheet({ loan, onClose }: { loan: LoanRow; onClose: () => void }
         </Field>
         <Field label="Paid via">
           <select value={method} onChange={(e) => setMethod(e.target.value as PaymentMethod)}>
-            <option value="bank">Bank</option>
             <option value="cash">Cash</option>
+            <option value="upi">UPI</option>
+            <option value="bank">Bank</option>
           </select>
         </Field>
       </div>

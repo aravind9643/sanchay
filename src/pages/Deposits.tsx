@@ -12,7 +12,7 @@ import {
   ErrorNote, Segments, initials, fmtDate, Notice,
 } from '../components/ui';
 import { IconContributions, IconCheck, IconShare } from '../components/icons';
-import type { Member, ContributionPeriod, Contribution } from '../lib/types';
+import type { Member, ContributionPeriod, Contribution, PaymentMethod } from '../lib/types';
 import { today } from '../lib/dates';
 
 type MemberFilter = 'all' | 'unpaid' | 'paid';
@@ -566,7 +566,7 @@ function RecordSheet({
   const { config } = useSession();
   const [amount, setAmount] = useState(String(paiseToRupees(defaultPaise)));
   const [paidOn, setPaidOn] = useState(() => today());
-  const [method, setMethod] = useState<'bank' | 'cash'>('bank');
+  const [method, setMethod] = useState<PaymentMethod>('cash');
   const [note, setNote] = useState('');
 
   // Past the grace date AND no fee charged for this month yet. The second
@@ -644,9 +644,10 @@ function RecordSheet({
           <input type="date" value={paidOn} onChange={(e) => setPaidOn(e.target.value)} />
         </Field>
         <Field label="Method">
-          <select value={method} onChange={(e) => setMethod(e.target.value as 'bank' | 'cash')}>
-            <option value="bank">Bank</option>
+          <select value={method} onChange={(e) => setMethod(e.target.value as PaymentMethod)}>
             <option value="cash">Cash</option>
+            <option value="upi">UPI</option>
+            <option value="bank">Bank</option>
           </select>
         </Field>
       </div>
